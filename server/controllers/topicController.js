@@ -62,7 +62,7 @@ function TopicController() {
   // -------------------------------------------------------------------------
 
   _this.getTopic = function (req, res) {
-    Topic.findOne({_id: req.params.id}).populate('posts').populate('_user').exec(function (err, topic) {
+    Topic.findOne({_id: req.params.id}).populate({path: 'posts', model: 'Post', populate: { path: '_user', model: 'User'}}).populate('_user').exec(function (err, topic) {
       if (err) {
         console.log("Error getting a topic");
         console.log(err);

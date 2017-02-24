@@ -41,7 +41,7 @@ app.controller('topicController', ['$scope', '$location', '$routeParams', 'topic
     getPosts();
 
     // -------------------------------------------------------------------------
-    //                            Create Topic
+    //                            Create Post
     // -------------------------------------------------------------------------
     _this.createPost = function () {
       console.log("User Posted in a topic", _this.newPost);
@@ -51,11 +51,29 @@ app.controller('topicController', ['$scope', '$location', '$routeParams', 'topic
       console.log(_this.newPost.topicid);
       postFactory.createPost(_this.newPost, function (postAfterServer) {
         console.log(postAfterServer);
+        getTopic();
         getPosts();
         _this.newPost = {};
       });
     };
 
+    // -------------------------------------------------------------------------
+    //                            Create Comment
+    // -------------------------------------------------------------------------
+    _this.createComment = function () {
+      console.log("User Commented in a post", _this.newPost);
+      _this.newPost.userid = "58af7db6e42c73131412d0c3";
+      _this.newPost.topicid = $routeParams.id;
+      // _this.newTopic.userid = _this.user._id;
+      console.log(_this.newPost.topicid);
+      postFactory.createPost(_this.newPost, function (postAfterServer) {
+        console.log(postAfterServer);
+        getTopic();
+        getPosts();
+      });
+      console.log(_this.newComment.comment);
+        _this.newComment = {};
+    };
 
 }]);
 

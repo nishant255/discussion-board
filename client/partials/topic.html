@@ -10,7 +10,14 @@
   <hr>
   <h3>Post you answer here...</h3>
   <form ng-submit="TC.createPost()">
-    <input type="text" ng-model="TC.newPost.post" placeholder="Post Here!">
+    <input type="text" ng-model="TC.newPost.post" placeholder="Post Here!" required>
     <input type="submit" value="Post">
-  </form>  
+  </form>
+  <div ng-repeat="post in TC.currentTopic.posts track by $index">
+    <p><a href="#!/user/{{post._user._id}}">{{post._user.name | titleCase}}</a>: {{post.post}}</p>
+    <form ng-submit="TC.createComment()">
+      <input type="text" id="comment{{post._id}}" ng-model="TC.newComment.comment[post._id]" placeholder="Comment Here!" required>
+      <input type="submit" value="Comment">
+    </form>
+  </div>
 </div>

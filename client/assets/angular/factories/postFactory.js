@@ -23,11 +23,11 @@ app.factory('postFactory', ['$http', function ($http) {
     //                            Create Post
     // -------------------------------------------------------------------------
 
-    _this.createPost = function (newTopic, callback) {
+    _this.createPost = function (newPost, callback) {
       console.log("Factory Says: Creating Post");
-      $http.post('/topics', newTopic).then(function (topicAfterServer) {
+      $http.post('/posts', newPost).then(function (postAfterServer) {
         if (typeof(callback) == 'function') {
-          callback(topicAfterServer);
+          callback(postAfterServer);
         }
       });
     };
