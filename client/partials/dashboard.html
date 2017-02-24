@@ -1,0 +1,40 @@
+<div>
+  <h1>Welcome {{DC.user.name | titleCase }}!</h1>
+</div>
+<div>
+  <p>Search Topic: <input type="text" ng-model="filter_name" placeholder="Filter Topics"></p>
+  <table id="customer_table">
+    <thead>
+      <tr>
+        <td>Category</td>
+        <td>Topic</td>
+        <td>User Name</td>
+        <td>Posts</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat = "topic in DC.topics | filter: filter_name" >
+        <td>{{topic.category}}</td>
+        <td><a href="#!/topic/{{topic._id}}">{{topic.topic}}</a></td>
+        <td><a href="#!/user/{{topic._user._id}}">{{topic._user.name | titleCase}}</a></td>
+        <td>{{topic.posts.length}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div>
+  <h3><u>Add a new Topic</u></h3>
+  <form ng-submit="DC.createTopic()">
+    <input type="text" ng-model="DC.newTopic.topic" placeholder="Topic" required>
+    <input type="text" ng-model="DC.newTopic.description" placeholder="Description" required>
+    <select ng-model="DC.newTopic.category" required>
+      <option value="">Select Category</option>
+      <option value="Ruby on Rails">Ruby on Rails</option>
+      <option value="MySQL">MySQL</option>
+      <option value="UX">UX</option>
+      <option value="Web Development">Web Development</option>
+      <option value="Python">Python</option>
+    </select>
+    <input type="submit" value="Submit a Topic">
+  </form>
+</div>

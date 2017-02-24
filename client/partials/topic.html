@@ -1,0 +1,16 @@
+<div>
+  <nav>
+    <a href="#!/dashboard">Dashboard</a>
+    <a href="#!/logout">Logout</a>
+  </nav>
+  <h2><a href="#!/user/{{TC.currentTopic._user._id}}">{{TC.currentTopic._user.name | titleCase}}</a> posted a topic:</h2>
+
+  <h3><i><b>{{TC.currentTopic.topic | titleCase}}</b></i></h3>
+  <h4><u>Description:</u> {{TC.currentTopic.description}}</h4>
+  <hr>
+  <h3>Post you answer here...</h3>
+  <form ng-submit="TC.createPost()">
+    <input type="text" ng-model="TC.newPost.post" placeholder="Post Here!">
+    <input type="submit" value="Post">
+  </form>  
+</div>

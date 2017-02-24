@@ -1,0 +1,14 @@
+<div>
+  <nav>
+    <a href="#!/dashboard">Dashboard</a>
+    <a href="#!/logout">Logout</a>
+  </nav>
+  <div>
+    <h2>Username: {{UC.currentUser.name | titleCase}}</h2>
+    <br>
+    <h3>Posted...</h3>
+    <h4>{{UC.currentUser.topics.length}} Topic</h4>
+    <h4>{{UC.currentUser.posts.length}} Posts</h4>
+    <h4>{{UC.currentUser.comments.length}} Comments</h4>
+  </div>
+</div>
